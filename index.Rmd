@@ -36,54 +36,33 @@ library(DT)
 source("./Functions/functions2.R")
 
 thematic::thematic_rmd(font = "auto")
+
 ```
 
 ```{r Reading in our picks files, include=FALSE}
-current_week = 16 #Set what week it is
-week_1 = read_csv("./CSV_Data_Files/2021 NFL Week 1.csv")
-week_2 = read_csv("./CSV_Data_Files/2021 NFL Week 2.csv")
-week_3 = read_csv("./CSV_Data_Files/2021 NFL Week 3.csv")
-week_4 = read_csv("./CSV_Data_Files/2021 NFL Week 4.csv")
-week_5 = read_csv("./CSV_Data_Files/2021 NFL Week 5.csv")
-week_6 = read_csv("./CSV_Data_Files/2021 NFL Week 6.csv")
-week_7 = read_csv("./CSV_Data_Files/2021 NFL Week 7.csv")
-week_8 = read_csv("./CSV_Data_Files/2021 NFL Week 8.csv")
-week_9 = read_csv("./CSV_Data_Files/2021 NFL Week 9.csv")
-week_10 = read_csv("./CSV_Data_Files/2021 NFL Week 10.csv")
-week_11 = read_csv("./CSV_Data_Files/2021 NFL Week 11.csv")
-week_12 = read_csv("./CSV_Data_Files/2021 NFL Week 12.csv")
-week_13 = read_csv("./CSV_Data_Files/2021 NFL Week 13.csv")
-week_14 = read_csv("./CSV_Data_Files/2021 NFL Week 14.csv")
-week_15 = read_csv("./CSV_Data_Files/2021 NFL Week 15.csv")
-week_16 = read_csv("./CSV_Data_Files/2021 NFL Week 16.csv")
+current_week = 1 #Set what week it is
+week_1 = read_csv("./CSV_Data_Files/2022 NFL Week 1.csv")
+# week_2 = read_csv("./CSV_Data_Files/2021 NFL Week 2.csv")
+# week_3 = read_csv("./CSV_Data_Files/2021 NFL Week 3.csv")
+# week_4 = read_csv("./CSV_Data_Files/2021 NFL Week 4.csv")
+# week_5 = read_csv("./CSV_Data_Files/2021 NFL Week 5.csv")
+# week_6 = read_csv("./CSV_Data_Files/2021 NFL Week 6.csv")
+# week_7 = read_csv("./CSV_Data_Files/2021 NFL Week 7.csv")
+# week_8 = read_csv("./CSV_Data_Files/2021 NFL Week 8.csv")
+# week_9 = read_csv("./CSV_Data_Files/2021 NFL Week 9.csv")
+# week_10 = read_csv("./CSV_Data_Files/2021 NFL Week 10.csv")
+# week_11 = read_csv("./CSV_Data_Files/2021 NFL Week 11.csv")
+# week_12 = read_csv("./CSV_Data_Files/2021 NFL Week 12.csv")
+# week_13 = read_csv("./CSV_Data_Files/2021 NFL Week 13.csv")
+# week_14 = read_csv("./CSV_Data_Files/2021 NFL Week 14.csv")
+# week_15 = read_csv("./CSV_Data_Files/2021 NFL Week 15.csv")
+# week_16 = read_csv("./CSV_Data_Files/2021 NFL Week 16.csv")
 # week_17 = read_csv("./CSV_Data_Files/2021 NFL Week 17.csv")
 # week_18 = read_csv("./CSV_Data_Files/2021 NFL Week 18.csv")
 # week_19 = read_csv("./CSV_Data_Files/2021 NFL Wild Card.csv")
 # week_20 = read_csv("./CSV_Data_Files/2021 NFL Divisional Round.csv")
 # week_21 = read_csv("./CSV_Data_Files/2021 NFL Conference Round.csv")
 # week_22 = read_csv("./CSV_Data_Files/2021 NFL Super Bowl.csv")
-wp_wk1 = read_csv("./CSV_Data_Files/2021 NFL Week 1 MA376.csv")
-wp_wk2 = read_csv("./CSV_Data_Files/2021 NFL Week 2 MA376.csv")
-wp_wk3 = read_csv("./CSV_Data_Files/2021 NFL Week 3 MA376.csv")
-wp_wk4 = read_csv("./CSV_Data_Files/2021 NFL Week 4 MA376.csv")
-wp_wk5 = read_csv("./CSV_Data_Files/2021 NFL Week 5 MA376.csv")
-wp_wk6 = read_csv("./CSV_Data_Files/2021 NFL Week 6 MA376.csv")
-wp_wk7 = read_csv("./CSV_Data_Files/2021 NFL Week 7 MA376.csv")
-wp_wk8 = read_csv("./CSV_Data_Files/2021 NFL Week 8 MA376.csv")
-wp_wk9 = read_csv("./CSV_Data_Files/2021 NFL Week 9 MA376.csv")
-wp_wk10 = read_csv("./CSV_Data_Files/2021 NFL Week 10 MA376.csv")
-wp_wk11 = read_csv("./CSV_Data_Files/2021 NFL Week 11 MA376.csv")
-wp_wk12 = read_csv("./CSV_Data_Files/2021 NFL Week 12 MA376.csv")
-wp_wk13 = read_csv("./CSV_Data_Files/2021 NFL Week 13 MA376.csv")
-wp_wk14 = read_csv("./CSV_Data_Files/2021 NFL Week 14 MA376.csv")
-wp_wk15 = read_csv("./CSV_Data_Files/2021 NFL Week 15 MA376.csv")
-wp_wk16 = read_csv("./CSV_Data_Files/2021 NFL Week 16 MA376.csv")
-# wp_wk17 = read_csv("./CSV_Data_Files/2021 NFL Week 17 MA376.csv")
-# wp_wk18 = read_csv("./CSV_Data_Files/2021 NFL Week 18 MA376.csv")
-# wp_wk19 = read_csv("./CSV_Data_Files/2021 NFL Wild Card MA376.csv")
-# wp_wk20 = read_csv("./CSV_Data_Files/2021 NFL Divisional Round MA376.csv")
-# wp_wk21 = read_csv("./CSV_Data_Files/2021 NFL Conference Round MA376.csv")
-# wp_wk22 = read_csv("./CSV_Data_Files/2021 NFL Super Bowl MA376.csv")
 
 #reading in scores
 Scores = read_csv(glue::glue("./CSV_Data_Files/NFL_Scores_{current_week}.csv")) 
@@ -101,21 +80,21 @@ espn_season = read_csv(glue::glue("./CSV_Data_Files/ESPN_Experts_Season_{current
 
 #Reading in the moneyline odds for each team and cleaning the team names
 odds_wk1 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_1.csv"))
-odds_wk2 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_2.csv"))
-odds_wk3 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_3.csv"))
-odds_wk4 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_4.csv"))
-odds_wk5 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_5.csv"))
-odds_wk6 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_6.csv"))
-odds_wk7 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_7.csv"))
-odds_wk8 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_8.csv"))
-odds_wk9 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_9.csv"))
-odds_wk10 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_10.csv"))
-odds_wk11 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_11.csv"))
-odds_wk12 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_12.csv"))
-odds_wk13 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_13.csv"))
-odds_wk14 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_14.csv"))
-odds_wk15 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_15.csv"))
-odds_wk16 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_16.csv"))
+# odds_wk2 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_2.csv"))
+# odds_wk3 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_3.csv"))
+# odds_wk4 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_4.csv"))
+# odds_wk5 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_5.csv"))
+# odds_wk6 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_6.csv"))
+# odds_wk7 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_7.csv"))
+# odds_wk8 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_8.csv"))
+# odds_wk9 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_9.csv"))
+# odds_wk10 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_10.csv"))
+# odds_wk11 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_11.csv"))
+# odds_wk12 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_12.csv"))
+# odds_wk13 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_13.csv"))
+# odds_wk14 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_14.csv"))
+# odds_wk15 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_15.csv"))
+# odds_wk16 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_16.csv"))
 # odds_wk17 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_17.csv"))
 # odds_wk18 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_18.csv"))
 # odds_wk19 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_19.csv"))
@@ -124,16 +103,8 @@ odds_wk16 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_16.csv"))
 # odds_wk22 = read_csv(glue::glue("./CSV_Data_Files/Moneyline_Odds_22.csv"))
 
 ####################UPDATE THESE###############################
-inscom.picks = list(week_1, week_2, week_3, week_4, week_5, week_6, week_7,
-                  week_8, week_9, week_10, week_11, week_12, week_13, week_14, 
-                  week_15, week_16) #add in the additional weeks
-wp.picks = list(wp_wk1, wp_wk2, wp_wk3, wp_wk4, wp_wk5, 
-                 wp_wk6, wp_wk7, wp_wk8, wp_wk9, wp_wk10,
-                 wp_wk11,wp_wk12, wp_wk13, wp_wk14, wp_wk15,
-                 wp_wk16) #add in the additional weeks
-odds = rbind(odds_wk1, odds_wk2, odds_wk3, odds_wk4, odds_wk5, odds_wk6, odds_wk7,
-             odds_wk8, odds_wk9, odds_wk10, odds_wk11, odds_wk12, odds_wk13,
-             odds_wk14, odds_wk15, odds_wk16) #add in the additional weeks
+inst.picks = list(week_1) #add in the additional weeks
+odds = rbind(odds_wk1) #add in the additional weeks
 ####################END OF UPDATE##############################
 
 weeks = as.list(seq(1:current_week)) #creating a list of each week number
@@ -156,9 +127,9 @@ this_week = pull(winners[[length(winners)]])
 weekly_number_of_games = map_dbl(weeks, week_number_games)
 ```
 
-```{r INSCOM Group Predictions, include=FALSE}
-#Creating the list of everyone's predictions each week.
-games = map(inscom.picks, games_fn)
+```{r Group Predictions, include=FALSE}
+#Creating the list of everyones predictions each week.
+games = map(inst.picks, games_fn)
 
 #Creating the prediction table.  
 pred_table = map(games, pred_table_fn)
@@ -174,11 +145,11 @@ results = map2(with_winners,weekly_number_of_games, results_fn)
 ```{r Displaying Group Results, echo=FALSE}
 #Displaying the group results
 
-inscom_group_table = results[[length(results)]] %>% gt() %>% 
+inst_group_table = results[[length(results)]] %>% gt() %>% 
   cols_align(
     align = "center") %>% 
    tab_header(
-    title = md("This Week's INSCOM G3 Predictions"),
+    title = md("This Week's Predictions"),
     subtitle = md(glue("Week {length(results)}"))
     ) %>% 
    tab_style(
@@ -224,7 +195,7 @@ season_games = sum(unlist(weekly_games_picked))
 season_wins = sum(unlist(weekly_group_correct_picks))
 
 #calculating the number of people who picked this week
-Total = dim(inscom.picks[[length(weeks)]])[1]
+Total = dim(inst.picks[[length(weeks)]])[1]
 ```
 
 ```{r plotting group results, include=FALSE}
@@ -235,20 +206,19 @@ group_season_for_plotting = unlist(weekly_win_percentage) %>% as.data.frame() %>
 ```
 
 ```{r Plotting the group results, echo=FALSE}
-inscom_group_season_plot = group_season_for_plotting %>% 
+inst_group_season_plot = group_season_for_plotting %>% 
 ggplot(aes(x = as.factor(Week), y = `Win Percentage`))+
   geom_point()+
   geom_path(aes(x = Week))+
-  #geom_text(aes(label=`Win Percentage`),hjust=.5, vjust=-1.5)+
   ylim(c(0, 1)) +
   xlab("NFL Week") + 
   ylab("Correct Percentage")+
-  ggtitle("Weekly INSCOM G3 Group Correct Percentage")+
+  ggtitle("Weekly Group Correct Percentage")+
   theme_classic()+
   theme(plot.title = element_text(hjust = 0.5, size = 18))
 ```
 
-```{r INSCOM beating cbs week, include=FALSE}
+```{r instructor beating cbs week, include=FALSE}
 #Creating a list of correct percentages for each week.
 cbs_weekly_percent = map(weeks, cbs_percent)
 
@@ -259,7 +229,7 @@ cbs_experts_beat = map2(cbs_weekly_percent, weekly_win_percentage, experts_beat)
 cbs_experts_total = map(cbs_weekly_percent, experts_tot)
 ```
 
-```{r INSCOM beating cbs season, include=FALSE}
+```{r instructor beating cbs season, include=FALSE}
 #Creating a list of correct percentages for each week.
 cbs_season_percent = map(weeks, cbs_season_percent)
 
@@ -270,7 +240,7 @@ cbs_experts_beat_season = map2(cbs_season_percent, season_win_percentage, expert
 cbs_experts_season_total = map(cbs_season_percent, experts_tot)
 ```
 
-```{r INSCOM beating ESPN week, include=FALSE}
+```{r instructor beating ESPN week, include=FALSE}
 #Creating a list of correct percentages for each week.
 espn_weekly_percent = map(weeks, espn_percent)
 
@@ -281,7 +251,7 @@ espn_experts_beat = map2(espn_weekly_percent, weekly_win_percentage, experts_bea
 espn_experts_total = map(espn_weekly_percent, experts_tot)
 ```
 
-```{r INSCOM beating ESPN season, include=FALSE}
+```{r instructor beating ESPN season, include=FALSE}
 #Creating a list of correct percentages for each week.
 espn_season_percent = map(weeks, espn_season_percent)
 
@@ -294,7 +264,7 @@ espn_experts_season_total = map(espn_season_percent, experts_tot)
 
 ```{r individual results, include=FALSE}
 #Creating a list of individual results for each week.
-weekly_indiv = pmap(list(inscom.picks, winners, weeks), indiv_weekly_pred)
+weekly_indiv = pmap(list(inst.picks, winners, weeks), indiv_weekly_pred)
 
 #Combining each week into one dataframe and calculating percentage Correct for this week.  
 full_season = weekly_indiv %>% reduce(full_join, by = "Name") %>% 
@@ -323,14 +293,14 @@ for (i in 1:dim(a)[1]){
   }
 }
 
-#Creating a vector of how many games each person picked correct over the season
+#Creatign a vector of how many games each person picked correct over the season
 tot_correct = NULL
 help = NULL
 for (i in 1:dim(a)[1]){
   tot_correct[i] = sum(a[i,], na.rm = T)
 }
 
-#adding how many weeks each person picked, season correct percentage, and adjusted season percentage to the data frame and sorting the data
+#adding how many weeks each person picked, season correct percentage, and adjusted season percentag to the data frame and sorting the data
 indiv_disp = full_season %>% add_column(`Weeks Picked` = tot_week) %>%
   add_column(tot_correct)%>%
   add_column(tot_picks)%>%
@@ -390,7 +360,7 @@ indiv_table = indiv_disp_2 %>% gt() %>%
   cols_align(
     align = "center") %>% 
    tab_header(
-    title = md("INSCOM G3 Individual Results"),
+    title = md("Individual Results"),
     subtitle = md(glue("Week {length(weeks)}"))
     ) %>% 
    tab_style(
@@ -472,16 +442,15 @@ indiv_table_2$dependencies = c(indiv_table_2$dependencies, htmlwidgets:::widget_
 
 ```{r Plotting individual results over the season2, echo=FALSE, out.width = "100%"}
 #Creating the individual plot.  
-inscom_indiv_plots = weekly_indiv_percent_plot %>% 
+inst_indiv_plots = weekly_indiv_percent_plot %>% 
   ggplot(aes(x = factor(Week), y = Percent, color = Name))+
   geom_point()+
   geom_path(aes(x = as.factor(Week), y = Percent, color = Name, 
                 group = Name))+
-  geom_text_repel(aes(label=round(Percent,3)),hjust=0.5, vjust=2, size = 3)+
   ylim(c(0, 1)) +
   labs(x = "NFL Week", 
        y = "Correct Percentage", 
-       title = "Weekly INSCOM G3 Individual Correct Percentage")+
+       title = "Weekly Individual Correct Percentage")+
   facet_wrap(~Name)+
   theme_classic()+
   theme(legend.position = "none",
@@ -500,8 +469,6 @@ indiv_plot_comb = weekly_indiv_percent %>%
   geom_point()+
   geom_line(aes(x = as.factor(Week), y = Percent, color = Name, 
                 group = Name))+
-  #geom_text_repel(aes(label=Name),hjust=0, vjust=0, size = 3)+
-  #geom_text(aes(label=Percent),hjust=.5, vjust=-1.5)+
   ylim(c(0, 1)) +
   labs(x = "NFL Week", 
        y = "Correct Percentage", 
@@ -512,501 +479,7 @@ indiv_plot_comb = weekly_indiv_percent %>%
 ```
 -->
 
-```{r West Point Group Predictions, include=FALSE}
-### West Point Group Predictions
-
-#Creating the list of everyones predictions each week.
-wp_games = map(wp.picks, games_fn)
-
-#Creating the prediction table.  
-wp_pred_table = map(wp_games, pred_table_fn)
-
-#Adding who won to the predictions
-wp_with_winners = map2(wp_pred_table, winners, adding_winners)
-
-#Creating results for each week.
-wp_results = map2(wp_with_winners,weekly_number_of_games, wp_results_fn)
-```
-
-```{r Printing West Point Group Prediction Table, echo=FALSE}
-#Displaying the group results
-wp_group_table = wp_results[[length(wp_results)]] %>% 
-  gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's West Point Group Predictions"),
-    subtitle = md(glue("Week {length(results)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="No"
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="Yes"
-    ))%>% 
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )
-```
-
-```{r West Point Weekly and season Group Results, include=FALSE}
-# Printing the weekly and season win percentage     
-
-#how many games correct, incorrect, and not picked each week
-wp_weekly_group_correct = map(wp_results, weekly_group_correct_fn)  
-
-#how many games were picked each week
-wp_weekly_games_picked = map2(wp_weekly_group_correct, weekly_number_of_games, weekly_games_picked_fn)
-
-#Calculating the number of correct picks for each week
-wp_weekly_group_correct_picks = map(wp_weekly_group_correct, weekly_group_correct_picks_fn)
-
-#Calculating weekly win percentage
-wp_weekly_win_percentage = map2(wp_weekly_group_correct_picks, wp_weekly_games_picked,
-                                weekly_win_percentage_fn)
-
-#Calculating season win percentage
-wp_season_win_percentage = round(sum(unlist(wp_weekly_group_correct_picks))/sum(unlist(wp_weekly_games_picked)),4)
-
-#Calculating number of games picked this season
-wp_season_games = sum(unlist(wp_weekly_games_picked))
-
-#calculating season wins
-wp_season_wins = sum(unlist(wp_weekly_group_correct_picks))
-
-#calculating the number of people who picked this week
-wp_Total = dim(wp.picks[[length(weeks)]])[1]
-```
-
-```{r Data for West Point group results, include=FALSE}
-#Previous Weeks
-wp_group_season_for_plotting = unlist(wp_weekly_win_percentage) %>% as.data.frame() %>% 
-  rename(`Win Percentage` = ".") %>% 
-  add_column(Week = unlist(weeks))
-```
-
-```{r Plotting West Point group results, echo=FALSE}
-wp_group_plot = wp_group_season_for_plotting %>% 
-ggplot(aes(x = as.factor(Week), y = `Win Percentage`))+
-  geom_point()+
-  geom_path(aes(x = Week))+
-  #geom_text(aes(label=`Win Percentage`),hjust=.5, vjust=-1.5)+
-  ylim(c(0, 1)) +
-  labs(x = "NFL Week", 
-       y = "Correct Percentage", 
-       title = "Weekly West Point Group Correct Percentage", 
-       caption = glue::glue("Best week is Week {wp_group_season_for_plotting$Week[which(wp_group_season_for_plotting$`Win Percentage`==max(wp_group_season_for_plotting$`Win Percentage`))]}"))+
-  theme_classic()+
-  theme(plot.title = element_text(hjust = 0.5, size = 18))
-```
-
-```{r West Point beating cbs week, include=FALSE}
-#Creating a list of how many cbs experts west point beats each week.
-wp_cbs_experts_beat = map2(cbs_weekly_percent, wp_weekly_win_percentage, experts_beat)
-```
-
-```{r West Point beating cbs season, include=FALSE}
-#Creating a list of how many cbs experts west point beats for the season.
-wp_cbs_experts_beat_season = map2(cbs_season_percent, wp_season_win_percentage, experts_beat)
-```
-
-```{r West Point beating ESPN, include=FALSE}
-#Creating a list of how many cbs experts west point beats each week.
-wp_espn_experts_beat = map2(espn_weekly_percent, wp_weekly_win_percentage, experts_beat)
-```
-
-```{r West Point beating ESPN season, include=FALSE}
-#Creating a list of how many cbs experts west point beats for the season.
-wp_espn_experts_beat_season = map2(espn_season_percent, wp_season_win_percentage, experts_beat)
-```
-
-```{r west point individual results, include=FALSE}
-#Creating a list of individual results for each week.
-wp_weekly_indiv = pmap(list(wp.picks, winners, weeks), indiv_weekly_pred)
-
-#Combining each week into one dataframe and calculating percentage Correct for this week.  
-wp_full_season = wp_weekly_indiv %>% reduce(full_join, by = "Name") %>% 
-  mutate(Percent = round(pull(.[,ncol(.)]/weekly_number_of_games[[length(weekly_number_of_games)]]),4)) 
-#Creating a dataframe with only the weekly picks
-wp_a = wp_full_season %>% select(starts_with("Week"))
-
-#Creating a vector of how many weeks each person picked over the season
-wp_tot_week = NULL
-wp_help = NULL
-for (i in 1:dim(wp_a)[1]){
-  for(j in 1:length(wp_a)){
-    wp_help[j] = ifelse(is.na(wp_a[i,j])==T,0,1)
-    wp_tot_week[i] = sum(wp_help)
-  }
-}
-
-#Creating a vector of how many games each person picked over the season
-wp_tot_picks= NULL
-wp_help = NULL
-for (i in 1:dim(wp_a)[1]){
-  for(j in 1:length(wp_a)){
-    wp_help[j] = unlist(weekly_games_picked)[j]*ifelse(is.na(wp_a[i,j])==T,0,1)
-    wp_tot_picks[i] = sum(wp_help)
-  }
-}
-
-#Creating a vector of how many games each person picked correct over the season
-wp_tot_correct = NULL
-wp_help = NULL
-for (i in 1:dim(wp_a)[1]){
-  wp_tot_correct[i] = sum(wp_a[i,], na.rm = T)
-}
-
-#adding how many weeks each person picked, season correct percentage, and adjusted season percentag to the data frame and sorting the data
-wp_indiv_disp = wp_full_season %>% 
-  add_column(`Weeks Picked` = wp_tot_week) %>%
-  add_column(wp_tot_correct)%>%
-  add_column(wp_tot_picks)%>%
-  mutate(`Season Percent` = round(wp_tot_correct/wp_tot_picks,4))%>%
-  mutate(`Adj Season Percent` = round(`Season Percent`*(wp_tot_week/length(wp_a)),4)) %>%
-  select(-wp_tot_correct, -wp_tot_picks) %>%
-  arrange(desc(Percent), desc(`Season Percent`)) %>%
-  mutate(Percent = ifelse(is.na(Percent)==T, 0, Percent))
-```
-
-```{r west point individual percentages, include=FALSE}
-#Calculating  individual percentages for each week.
-wp_weekly_indiv_percent = map2(wp_weekly_indiv, as.list(weekly_number_of_games), indiv_percent) %>% reduce(full_join, by = "Name")
-
-wp_weekly_indiv_percent_plot = wp_weekly_indiv_percent %>% 
-  pivot_longer(cols = starts_with("Week"), names_to = "Week", values_to = "Percent") %>% 
-  mutate(Percent = ifelse(is.na(Percent)==T, 0, Percent))
-
-wp_weekly_indiv_percent_plot = wp_weekly_indiv_percent_plot %>%
-  mutate(Week = factor(Week, levels))
-```
-
-```{r west point sparklines, include=FALSE}
-#adding sparklines
-wp_sparklines = 
-  wp_weekly_indiv_percent_plot %>% 
-  group_by(Name) %>% 
-  nest() %>% 
-  mutate(plot = map2(Name, data, plot_group)) %>% 
-  select(-data)
-  
-wp_indiv_disp_2 = wp_indiv_disp %>% 
-  inner_join(wp_sparklines, by = "Name") %>% 
-  mutate(`Season Trend` = NA)
-```
-
-```{r Printing Individual west point Table, echo=FALSE}
-# Printing the individual Table
-wp_indiv_table = wp_indiv_disp_2 %>% 
-  gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("West Point Individual Results"),
-    subtitle = md(glue("Week {length(weeks)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Percent),
-      rows = Percent<.5
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Percent),
-      rows = Percent>.5
-    )) %>% 
-     tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(`Season Percent`),
-      rows = `Season Percent`<.5
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(`Season Percent`),
-      rows = `Season Percent`>.5
-    ))%>% 
-     tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(`Adj Season Percent`),
-      rows = `Adj Season Percent`<.5
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(`Adj Season Percent`),
-      rows = `Adj Season Percent`>.5
-    ))%>% 
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )%>% 
-    tab_spanner(
-    label = "Weekly # Correct",
-    columns = starts_with(c("Week "))
-  )%>% 
-  text_transform(
-    locations = cells_body(c(`Season Trend`)),
-    fn = function(x){
-      map(wp_indiv_disp_2$plot, ggplot_image, height = px(30), aspect_ratio = 4)
-                 }) %>%
-  cols_hide(c(plot))
-
-wp_indiv_winners = wp_indiv_disp_2 %>% filter(Percent == max(Percent)) %>% select(Name) %>% pull() %>% paste(collapse = ", ")
-
-wp_indiv_season = wp_indiv_disp_2 %>% 
-  filter(`Season Percent` == max(`Season Percent`)) %>% 
-  select(Name) %>% 
-  pull() %>% 
-  paste(collapse = ", ")
-
-wp_indiv_season_adj = wp_indiv_disp_2 %>% 
-  filter(`Adj Season Percent` == max(`Adj Season Percent`)) %>% 
-  select(Name) %>% 
-  pull() %>% 
-  paste(collapse = ", ")
-```
-
-<!--
-```{r west Point formattable, echo=FALSE}
-wp_indiv_disp_3 = wp_indiv_disp_2 %>% select(-plot)
-wp_indiv_disp_3$`Season Trend` = apply(wp_indiv_disp_3[,2:(1+length(weeks))], 1, FUN = function(x) as.character(htmltools::as.tags(sparkline(as.numeric(x), type = "line", chartRangeMin = 0, chartRangeMax = 1, fillColor = "white"))))
-
-wp_out = as.htmlwidget(formattable(wp_indiv_disp_3, 
-                                align = c("l", rep("c", NROW(wp_indiv_disp_3)-1)),
-              list(`Season Percent` = color_bar("#FA614B"),
-              `Season Percent`= improvement_formatter,
-              `Adj Season Percent`= improvement_formatter)))
-              
-wp_out$dependencies = c(wp_out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
-```
--->
-
-```{r Plotting individual west point results over the season2, echo=FALSE}
-#Creating the individual plot.  
-wp_indiv_plot = wp_weekly_indiv_percent_plot %>% 
-  ggplot(aes(x = as.factor(Week), y = Percent, color = Name))+
-  geom_point()+
-  geom_line(aes(x = as.factor(Week), y = Percent, color = Name, 
-                group = Name))+
-  geom_text_repel(aes(label=round(Percent,4)),hjust=.5, vjust=2, size = 3)+
-  #geom_text(aes(label=Percent),hjust=.5, vjust=-1.5)+
-  ylim(c(0, 1)) +
-  labs(x = "NFL Week",
-       y = "Correct Percentage", 
-       title = "Weekly West Point Individual Correct Percentage")+
-  theme_classic()+
-  facet_wrap(~Name)+
-#  scale_x_discrete(guide = guide_axis(n.dodge = 2))+
-  theme(legend.position = "none",
-    plot.title = element_text(hjust = 0.5, size = 18),
-    axis.text.x=element_text(angle =45, vjust = 1, hjust = 1))
-```
-
-```{r Combined INSCOM and West Poin Predictions, include=FALSE}
-#Combining INSCOM and West Point picks
-comb_picks = map2(inscom.picks, wp.picks, comb_picks_fn)
-
-#Creating the list of Combined predictions each week.
-comb_games = map(comb_picks, games_fn)
-
-#Creating the Combined prediction table.  
-comb_pred_table = map(comb_games, pred_table_fn)
-
-#Adding who won to the predictions
-comb_with_winners = map2(comb_pred_table, winners, adding_winners)
-
-#Creating Combined results for each week.
-comb_results = map2(comb_with_winners,weekly_number_of_games, comb_results_fn)
-```
-
-```{r Printing Combined Prediction Results, echo=FALSE}
-#Displaying the Combined results
-comb_table = comb_results[[length(comb_results)]] %>% 
-  gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's Combined INSCOM and West Point Predictions"),
-    subtitle = md(glue("Week {length(results)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="No"
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="Yes"
-    ))%>% 
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )
-```
-
-```{r Combined Results over season, include=FALSE}
-#how many games correct, incorrect, and not picked each week
-comb_weekly_group_correct = map(comb_results, weekly_group_correct_fn)  
-
-#how many games were picked each week
-comb_weekly_games_picked = map2(comb_weekly_group_correct, weekly_number_of_games, weekly_games_picked_fn)
-
-#Calculating the number of correct picks for each week
-comb_weekly_group_correct_picks = map(comb_weekly_group_correct, weekly_group_correct_picks_fn)
-
-#Calculating weekly win percentage
-comb_weekly_win_percentage = map2(comb_weekly_group_correct_picks, comb_weekly_games_picked, weekly_win_percentage_fn)
-
-#Calculating season win percentage
-comb_season_win_percentage = round(sum(unlist(comb_weekly_group_correct_picks))/sum(unlist(comb_weekly_games_picked)),4)
-
-#Calculating number of games picked this season
-comb_season_games = sum(unlist(comb_weekly_games_picked))
-
-#calculating season wins
-comb_season_wins = sum(unlist(comb_weekly_group_correct_picks))
-
-# #calculating combined weekly win percentage
-# comb_weekly_win_percentage = map2(weekly_group_correct_picks, weekly_games_picked, weekly_win_percentage_fn)
-
-#calculating the number of people who picked this week
-comb_Total = dim(comb_picks[[length(comb_picks)]])[1]
-
-comb_season_for_plotting = unlist(comb_weekly_win_percentage) %>% as.data.frame() %>% 
-  rename(`Win Percentage` = ".") %>% 
-  add_column(Week = unlist(weeks))
-```
-
-```{r Plotting the Combined group results, echo=FALSE}
-comb_plot = comb_season_for_plotting %>% 
-ggplot(aes(x = as.factor(Week), y = `Win Percentage`))+
-  geom_point()+
-  geom_path(aes(x = Week))+
-  #geom_text(aes(label=`Win Percentage`),hjust=.5, vjust=-1.5)+
-  ylim(c(0, 1)) +
-  labs(x = "NFL Week", 
-       y = "Correct Percentage", 
-       title = "Weekly Combined Correct Percentage", 
-       caption = glue::glue("Best week is Week {comb_season_for_plotting$Week[which(comb_season_for_plotting$`Win Percentage`==max(comb_season_for_plotting$`Win Percentage`))]}"))+
-  theme_classic()+
-  theme(plot.title = element_text(hjust = 0.5, size = 18))
-```
-
-```{r Combined beating cbs, include=FALSE}
-#Creating a list of how many cbs experts our combined picks beat each week.
-comb_cbs_experts_beat = map2(cbs_weekly_percent, comb_weekly_win_percentage, experts_beat)
-```
-
-```{r combined beating cbs season, include=FALSE}
-#Creating a list of how many cbs experts our combined picks beat for the season.
-comb_cbs_experts_beat_season = map2(cbs_season_percent, comb_season_win_percentage, experts_beat)
-```
-
-```{r Combined beating ESPN, include=FALSE}
-#Creating a list of how many cbs experts we beat each week.
-comb_espn_experts_beat = map2(espn_weekly_percent, comb_weekly_win_percentage, experts_beat)
-```
-
-```{r combined beating ESPN season, include=FALSE}
-#Creating a list of how many cbs experts our combined picks beat for the season.
-comb_espn_experts_beat_season = map2(espn_season_percent, comb_season_win_percentage, experts_beat)
-```
-
-```{r matched picks, include=FALSE}
-#Finding where inst and Cadet predictions match
-matched = map2(results, wp_results, matched_fn)
-```
-
-```{r Printing matched results, echo=FALSE}
-matched_table = matched[[length(matched)]] %>% 
-  gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's Matched INSCOM and West Point Predictions"),
-    subtitle = md(glue("Week {length(results)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="No"
-    )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="Yes"
-    ))%>% 
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )
-```
-
-```{r include=FALSE}
-matched_per = map(matched, matched_percent_fn) %>% unlist() %>% as.data.frame() 
-
-matched_season_percent_for_plotting = matched_per %>% 
-  mutate(`Win Percentage` = matched_per[,1]) %>% 
-  select(`Win Percentage`) %>% 
-  add_column(Week = unlist(weeks)) 
-```
-
-```{r Plotting matched percent, echo=FALSE}
-matched_plot = matched_season_percent_for_plotting %>% 
-  ggplot(aes(x = as.factor(Week), y = `Win Percentage`))+
-  geom_point()+
-  geom_path(aes(x = Week))+
-  #geom_text(aes(label=`Win Percentage`),hjust=.5, vjust=-1.5)+
-  ylim(c(0, 1)) +
-  labs(x = "NFL Week", 
-       y = "Correct Percentage", 
-       title = "Weekly Matched Correct Percentage", 
-       caption = glue::glue("Best week is Week {matched_season_percent_for_plotting$Week[which(matched_season_percent_for_plotting$`Win Percentage`==max(matched_season_percent_for_plotting$`Win Percentage`))]}"))+
-  theme_classic()+
-  theme(plot.title = element_text(hjust = 0.5, size = 18))
-```
-
-```{r Matched Results over season, include=FALSE}
-#how many games correct, incorrect, and not picked each week
-matched_weekly_group_correct = map(matched, weekly_group_correct_fn)  
-
-#how many games were picked each week
-matched_weekly_games_picked = map2(matched_weekly_group_correct, weekly_number_of_games, weekly_games_picked_fn)
-
-#Calculating the number of correct picks for each week
-matched_weekly_group_correct_picks = map(matched_weekly_group_correct, weekly_group_correct_picks_fn)
-
-#Calculating weekly win percentage
-matched_weekly_win_percentage = map2(matched_weekly_group_correct_picks, matched_weekly_games_picked, weekly_win_percentage_fn)
-
-#Calculating season win percentage
-matched_season_win_percentage = round(sum(unlist(matched_weekly_group_correct_picks))/sum(unlist(matched_weekly_games_picked)),4)
-
-#Calculating number of games picked this season
-matched_season_games = sum(unlist(matched_weekly_games_picked))
-
-#calculating season wins
-matched_season_wins = sum(unlist(matched_weekly_group_correct_picks))
-```
-
-```{r Calculting INSCOM winnings based on moneyline odds}
+```{r Calculting instructor winnings based on moneyline odds}
 #adding the odds and winnings to the results table
 odds_results = map2(weeks, results, weekly_odds)
 
@@ -1021,9 +494,9 @@ season_money = weekly_winnings %>%
   mutate("Season Winnings" = cumsum(`Weekly Winnings`))
 ```
 
-```{r Creating INSCOM winnings table, echo=FALSE}
+```{r Creating instructor winnings table, echo=FALSE}
 #Displaying the group moneyline results
-inscom_group_odds_table = odds_results[[length(odds_results)]] %>% gt() %>% 
+inst_group_odds_table = odds_results[[length(odds_results)]] %>% gt() %>% 
   cols_align(
     align = "center") %>% 
    tab_header(
@@ -1071,7 +544,7 @@ inscom_group_odds_table = odds_results[[length(odds_results)]] %>% gt() %>%
    )
 ```
 
-```{r INSCOM winnings plot}
+```{r Instructor winnings plot}
 group_moneyline_plot_data = group_season_for_plotting %>% 
   add_column(season_money) %>% 
   select(-`Win Percentage`)
@@ -1079,16 +552,16 @@ group_moneyline_plot_data = group_season_for_plotting %>%
 group_moneyline_plot =  group_moneyline_plot_data %>% 
   ggplot(aes(x = as.factor(Week),
              y = `Season Winnings`, 
-             fill = `Season Winnings` > 0))+
+             fill = `Season Winnings` < 0))+
   geom_bar(stat = "identity")+
   scale_fill_manual(values = c("#be0032", "#006400"))+
   new_scale("fill")+
   geom_point(aes(x = as.factor(Week), y = `Weekly Winnings`, 
-                 fill = `Weekly Winnings` > 0), 
+                 fill = `Weekly Winnings` < 0), 
              size = 3, shape = 21, color = "black", stroke=2)+
   geom_path(aes(x = as.factor(Week), y = `Weekly Winnings`))+
   scale_fill_manual(values = c("#be0032", "#006400"))+
-  labs(x = "NFL Week", y = "Winnings", title = "INSCOM weekly and season winnings",
+  labs(x = "NFL Week", y = "Winnings", title = "Instructor weekly and season winnings",
        subtitle = "Bars represent season cumulative <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.  \nPoints represent Weekly <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.")+
   geom_hline(aes(yintercept = 0))+
   theme_classic()+
@@ -1096,219 +569,13 @@ group_moneyline_plot =  group_moneyline_plot_data %>%
         plot.title = element_text(hjust = .5, size = 18),
         plot.subtitle = element_markdown(hjust = .5, size = 10))
 
-this_weeks_inscom_money = group_moneyline_plot_data %>% 
+this_weeks_inst_money = group_moneyline_plot_data %>% 
   filter(Week==current_week) %>% 
   select(`Weekly Winnings`) %>% 
   pull() %>% 
   scales::dollar()
 
-this_seasons_inscom_money = group_moneyline_plot_data %>% 
-  filter(Week==current_week) %>% 
-  select(`Season Winnings`) %>% 
-  pull() %>% 
-  scales::dollar()
-```
-
-```{r Calculting West Point winnings based on moneyline odds}
-#adding the odds and winnings to the results table
-wp_odds_results = map2(weeks, wp_results, weekly_odds)
-
-#Creating a list of total winnings for each week
-wp_weekly_winnings = map(wp_odds_results, weekly_money)
-
-#total amount we have won/lost this season
-wp_season_money = wp_weekly_winnings %>% 
-  unlist() %>% 
-  as.data.frame() %>% 
-  rename("Weekly Winnings" = 1) %>% 
-  mutate("Season Winnings" = cumsum(`Weekly Winnings`))
-```
-
-```{r Creating West Point winnings table, echo=FALSE}
-#Displaying the group moneyline results
-wp_group_odds_table = wp_odds_results[[length(wp_odds_results)]] %>% gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's West Point Winnings"),
-    subtitle = md(glue("Week {length(wp_odds_results)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="No"
-    )) %>% 
-  tab_style(
-    style = cell_text(color = "red"),
-    locations = cells_body(
-      columns = c(Winnings),
-      rows = Winnings < 0
-    )) %>%
-  grand_summary_rows(
-    columns = c(Winnings),
-    fns = list(
-      Total = ~sum(.)),
-    missing_text = "",
-    formatter = fmt_currency
-    ) %>% 
-  # tab_style(
-  #   style = cell_text(color = "red"),
-  #   locations = cells_grand_summary(
-  #     columns = c(Winnings),
-  #     rows =  0 > `Total`
-  #   )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="Yes"
-    )) %>% 
-   fmt_currency(
-    columns = c(Winnings),
-    currency = "USD"
-    ) %>%
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )
-```
-
-```{r West Point winnings plot}
-wp_group_moneyline_plot_data = wp_group_season_for_plotting %>% 
-  add_column(wp_season_money) %>% 
-  select(-`Win Percentage`)
-
-wp_group_moneyline_plot = wp_group_moneyline_plot_data %>% 
-  ggplot(aes(x = as.factor(Week),
-             y = `Season Winnings`, 
-             fill = `Season Winnings` > 0))+
-  geom_bar(stat = "identity")+
-  scale_fill_manual(values = c("#be0032", "#006400"))+
-  new_scale("fill")+
-  geom_point(aes(x = as.factor(Week), y = `Weekly Winnings`, 
-                 fill = `Weekly Winnings` > 0), 
-             size = 3, shape = 21, color = "black", stroke=2)+
-  geom_path(aes(x = as.factor(Week), y = `Weekly Winnings`))+
-  scale_fill_manual(values = c("#be0032", "#006400"))+
-  labs(x = "NFL Week", y = "Winnings", title = "West Point weekly and season winnings",
-       subtitle = "Bars represent season cumulative <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.  \nPoints represent Weekly <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.")+
-  geom_hline(aes(yintercept = 0))+
-  theme_classic()+
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = .5, size = 18),
-        plot.subtitle = element_markdown(hjust = .5, size = 10))
-
-this_weeks_wp_money = wp_group_moneyline_plot_data %>% 
-  filter(Week==current_week) %>% 
-  select(`Weekly Winnings`) %>% 
-  pull() %>% 
-  scales::dollar()
-
-this_seasons_wp_money = wp_group_moneyline_plot_data %>% 
-  filter(Week==current_week) %>% 
-  select(`Season Winnings`) %>% 
-  pull() %>% 
-  scales::dollar()
-```
-
-```{r Calculting combined winnings based on moneyline odds}
-#adding the odds and winnings to the results table
-comb_odds_results = map2(weeks, comb_results, weekly_odds)
-
-#Creating a list of total winnings for each week
-comb_weekly_winnings = map(comb_odds_results, weekly_money)
-
-#total amount we have won/lost this season
-comb_season_money = comb_weekly_winnings %>% 
-  unlist() %>% 
-  as.data.frame() %>% 
-  rename("Weekly Winnings" = 1) %>% 
-  mutate("Season Winnings" = cumsum(`Weekly Winnings`))
-```
-
-```{r Creating combined winnings table, echo=FALSE}
-#Displaying the group moneyline results
-comb_group_odds_table = comb_odds_results[[length(comb_odds_results)]] %>% gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's Combined Picks Winnings"),
-    subtitle = md(glue("Week {length(comb_odds_results)}"))
-    ) %>% 
-   tab_style(
-    style = cell_text(color = "red", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="No"
-    )) %>% 
-  tab_style(
-    style = cell_text(color = "red"),
-    locations = cells_body(
-      columns = c(Winnings),
-      rows = Winnings < 0
-    )) %>%
-  grand_summary_rows(
-    columns = c(Winnings),
-    fns = list(
-      Total = ~sum(.)),
-    missing_text = "",
-    formatter = fmt_currency
-    ) %>% 
-  # tab_style(
-  #   style = cell_text(color = "red"),
-  #   locations = cells_grand_summary(
-  #     columns = c(Winnings),
-  #     rows =  0 > `Total`
-  #   )) %>% 
-   tab_style(
-    style = cell_text(color = "green", weight = "bold"),
-    locations = cells_body(
-      columns = c(Correct),
-      rows = Correct =="Yes"
-    )) %>% 
-   fmt_currency(
-    columns = c(Winnings),
-    currency = "USD"
-    ) %>%
-  tab_options(
-    data_row.padding = px(3),
-    container.height = "100%"
-   )
-```
-
-```{r combined winnings plot}
-comb_group_moneyline_plot_data = comb_season_for_plotting %>% 
-  add_column(comb_season_money) %>% 
-  select(-`Win Percentage`)
-
-comb_moneyline_plot =  comb_group_moneyline_plot_data %>% 
-  ggplot(aes(x = as.factor(Week),
-             y = `Season Winnings`, 
-             fill = `Season Winnings` > 0))+
-  geom_bar(stat = "identity")+
-  scale_fill_manual(values = c("#be0032", "#006400"))+
-  new_scale("fill")+
-  geom_point(aes(x = as.factor(Week), y = `Weekly Winnings`, 
-                 fill = `Weekly Winnings` > 0), 
-             size = 3, shape = 21, color = "black", stroke=2)+
-  geom_path(aes(x = as.factor(Week), y = `Weekly Winnings`))+
-  scale_fill_manual(values = c("#be0032", "#006400"))+
-  labs(x = "NFL Week", y = "Winnings", title = "Combined picks weekly and season winnings",
-       subtitle = "Bars represent season cumulative <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.  \nPoints represent Weekly <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.")+
-  geom_hline(aes(yintercept = 0))+
-  theme_classic()+
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = .5, size = 18),
-        plot.subtitle = element_markdown(hjust = .5, size = 10))
-
-this_weeks_comb_money = comb_group_moneyline_plot_data %>% 
-  filter(Week==current_week) %>% 
-  select(`Weekly Winnings`) %>% 
-  pull() %>% 
-  scales::dollar()
-
-this_seasons_comb_money = comb_group_moneyline_plot_data %>% 
+this_seasons_inst_money = group_moneyline_plot_data %>% 
   filter(Week==current_week) %>% 
   select(`Season Winnings`) %>% 
   pull() %>% 
@@ -1316,23 +583,19 @@ this_seasons_comb_money = comb_group_moneyline_plot_data %>%
 ```
 
 ```{r data for data page}
-inscom.data = map2(inscom.picks, weeks, disp_data) %>% bind_rows()
-
-wp.data = map2(wp.picks, weeks, disp_data) %>% bind_rows()
+inst.data = map2(inst.picks, weeks, disp_data) %>% bind_rows()
 ```
 
 
 ```{r fivethirtyeight}
-inscom_538 = map(results, five38) %>% unlist() %>% sum()
-wp_538 = map(wp_results, five38) %>% unlist() %>% sum()
-comb_538 = map(comb_results, five38) %>% unlist() %>% sum()
+inst_538 = map(results, five38) %>% unlist() %>% sum()
 ```
 
 ```{r pregame, eval=FALSE, include=FALSE}
 #Predictions for the week
 
 #Creating the list of group predictions each week.
-games = map(inscom.picks, games_fn)
+games = map(inst.picks, games_fn)
 
 #Creating the prediction table.  
 pred_table = map(games, pred_table_fn)
@@ -1344,27 +607,7 @@ pred_table[[length(pred_table)]] %>% mutate(Game = row_number()) %>%
   cols_align(
     align = "center") %>% 
    tab_header(
-    title = md("This Week's INSCOM Predictions"),
-    subtitle = md(glue("Week {length(weeks)}"))
-    ) %>% 
-   tab_options(
-    data_row.padding = px(3)
-   )
-
-#Creating the list of west point group predictions each week.
-wp_games = map(wp.picks, games_fn)
-
-#Creating the prediction table.  
-wp_pred_table = map(wp_games, pred_table_fn)
-
-#Printing table of Cadet predictions
-wp_pred_table[[length(pred_table)]] %>% mutate(Game = row_number()) %>% 
-  rename(`Votes For` = votes_for, `Votes Against` = votes_against) %>% 
-  gt() %>% 
-  cols_align(
-    align = "center") %>% 
-   tab_header(
-    title = md("This Week's West Point Predictions"),
+    title = md("This Week's Predictions"),
     subtitle = md(glue("Week {length(weeks)}"))
     ) %>% 
    tab_options(
@@ -1372,7 +615,7 @@ wp_pred_table[[length(pred_table)]] %>% mutate(Game = row_number()) %>%
    )
 ```
 
-INSCOM Group Predictions {data-navmenu="INSCOM Results"}
+Group Predictions
 ==========================================================================
 
 Sidebar {.sidebar} 
@@ -1404,27 +647,19 @@ Row
 ### Win percentage for the week
 
 ```{r}
-inscom_rate <- weekly_win_percentage[[length(weekly_win_percentage)]]*100
-gauge(inscom_rate, min = 0, max = 100, symbol = '%', gaugeSectors(
+inst_rate <- weekly_win_percentage[[length(weekly_win_percentage)]]*100
+gauge(inst_rate, min = 0, max = 100, symbol = '%', gaugeSectors(
   success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
 ))
-```
-
-```{r}
-#valueBox(value = weekly_win_percentage[[length(weekly_win_percentage)]],icon = "fa-user-plus",caption = "Win percentage for the week.",color = "green")
 ```
 
 ### Season Win Percentage
 
 ```{r}
-inscom_season <- season_win_percentage*100
-gauge(inscom_season, min = 0, max = 100, symbol = '%', gaugeSectors(
+inst_season <- season_win_percentage*100
+gauge(inst_season, min = 0, max = 100, symbol = '%', gaugeSectors(
   success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
 ))
-```
-
-```{r}
-#valueBox(value = season_win_percentage,icon = "fa-user-plus",caption = "Season win percentage.",color = "green")
 ```
 
 ### Games Correct
@@ -1448,18 +683,18 @@ Row
 ### 
 
 ```{r}
-inscom_group_table
+inst_group_table
 ```
 
 ### 
 
 ```{r}
-ggplotly(inscom_group_season_plot) %>% 
+ggplotly(inst_group_season_plot) %>% 
   layout(title = list(y = .93, xref = "plot"),
          margin = list(t = 40))
 ```
 
-INSCOM Individual Predictions {data-navmenu="INSCOM Results"}
+Individual Predictions
 ==========================================================================
 
 
@@ -1490,27 +725,6 @@ Sidebar {.sidebar}
  
  </font>
 
-<!--
-Row 
---------------------------------------
-
-### Best picks of the week
-```{r}
-valueBox(value = indiv_winners,icon = "fa-clipboard-list",caption = "Best Picks of the Week")
-```
-
-### Best picks of the season
-```{r}
-valueBox(value = indiv_season,icon = "fa-trophy",caption = "Season Leader")
-```
-
-### Best picks of the season adjusted
-```{r}
-valueBox(value = indiv_season_adj,icon = "fa-users",caption = "Adjusted Season Leader")
-```
-
--->
-
 row {.tabset}
 --------------------------------------
 
@@ -1528,330 +742,16 @@ indiv_table_2
 -->
 ### Individual Plots
 ```{r, out.width="100%"}
-ggplotly(inscom_indiv_plots)
-```
-<!--
-### Individual Plots2
-```{r}
-ggplotly(indiv_plot_comb)
-```
--->
-
-West Point Group Predictions {data-navmenu="West Point Results"}
-==========================================================================
-
-Sidebar {.sidebar} 
--------------------------------------
-#### CBS Sports
-
-<font size="4">
-
-This week we beat or tied `r wp_cbs_experts_beat[[length(weeks)]]` of `r cbs_experts_total[[length(weeks)]]` CBS Sports' Experts.
- 
-For the season we are currently beating or tied with `r wp_cbs_experts_beat_season[[length(weeks)]]` of `r cbs_experts_season_total[[length(weeks)]]` CBS Sports' Experts.
-
-</font>
-
-
-#### ESPN
-
-<font size="4">
-
-We also beat or tied `r wp_espn_experts_beat[[length(weeks)]]` of `r espn_experts_total[[length(weeks)]]` ESPN Experts.
-
-For the season we are currently beating or tied with `r wp_espn_experts_beat_season[[length(weeks)]]` of `r espn_experts_season_total[[length(weeks)]]` ESPN Experts.
-
-</font>
-
-Row
---------------------------------------
-
-### Win percentage for the week
-
-```{r}
-wp_rate <- wp_weekly_win_percentage[[length(wp_weekly_win_percentage)]]*100
-gauge(wp_rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-```{r}
-#valueBox(value = c_weekly_win_percentage[[length(c_weekly_win_percentage)]],icon = "fa-user-plus",caption = "Win percentage for the week.",color = "green")
-```
-
-### Season Win Percent
-
-```{r}
-wp_season <- wp_season_win_percentage*100
-gauge(wp_season, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-```{r}
-#valueBox(value = c_season_win_percentage,icon = "fa-user-plus",caption = "Season win percentage.",color = "green")
-```
-
-### Games Correct
-```{r}
-valueBox(value = wp_season_wins,icon = "fa-trophy",caption = "Correct Games this Season")
-```
-
-### Games Picked
-```{r}
-valueBox(value = wp_season_games,icon = "fa-clipboard-list",caption = "Games Picked this Season")
-```
-
-### Predictions
-```{r}
-valueBox(value = wp_Total,icon = "fa-users",caption = "Predictions this week")
+ggplotly(inst_indiv_plots)
 ```
 
 
-Row
---------------------------------------
-
-### 
-
-```{r}
-wp_group_table
-```
-
-### 
-
-```{r}
-ggplotly(wp_group_plot) %>% 
-  layout(title = list(y = .93, xref = "plot"),
-         margin = list(t = 40))
-```
-
-West Point Individual Predictions {data-navmenu="West Point Results"}
-==========================================================================
-
-Sidebar {.sidebar} 
--------------------------------------
-
-#### Best Picks of the Week.
-
-<font size="4">
-
- `r wp_indiv_winners`
- 
- </font>
- 
-#### Best Season Correct Percentage
-<font size="4">
-
-`r wp_indiv_season`
- 
- </font>
-
-#### Best Adjusted Season Correct Percentage
-<font size="4">
-
-`r wp_indiv_season_adj`
-
- * Adjusted season percentage accounts for the number of weeks picked.
- 
- </font>
- 
-<!-- 
-Row 
---------------------------------------
-
-### Best picks of the week
-```{r}
-valueBox(value = wp_indiv_winners,icon = "fa-clipboard-list",caption = "Best Picks of the Week")
-```
-
-### Best picks of the season
-```{r}
-valueBox(value = wp_indiv_season,icon = "fa-trophy",caption = "Season Leader")
-```
-
-### Best picks of the season adjusted
-```{r}
-valueBox(value = wp_indiv_season_adj,icon = "fa-user-plus",caption = "Adjusted Season Leader")
-```
-
--->
-
-Column {.tabset}
---------------------------------------
-
-### West Point Individual Table
-```{r}
-wp_indiv_table
-```
-
-<!--
-### West Point Individual Table2
-
-```{r, out.height="100%"}
-wp_out
-```
--->
-
-### West Point Individual Plots
-```{r, out.width="100%", out.height="100%"}
-ggplotly(wp_indiv_plot)
-```
-
-Combined Predictions
-==========================================================================
-
-Sidebar {.sidebar} 
--------------------------------------
-#### CBS Sports
-
-<font size="4">
-
-This week our combined predictions beat or tied `r comb_cbs_experts_beat[[length(weeks)]]` of `r cbs_experts_total[[length(weeks)]]` CBS Sports' Experts.
-
-For the season we are currently beating or tied with `r comb_cbs_experts_beat_season[[length(weeks)]]` of `r cbs_experts_season_total[[length(weeks)]]` CBS Sports' Experts.
-
-</font>
-
-
-#### ESPN
-
-<font size="4">
-
-Our combined predictions also beat or tied `r comb_espn_experts_beat[[length(weeks)]]` of `r espn_experts_total[[length(weeks)]]` ESPN Experts.
-
-For the season our combined predictions are currently beating or tied with `r comb_espn_experts_beat_season[[length(weeks)]]` of `r espn_experts_season_total[[length(weeks)]]` ESPN Experts.
-
-</font>
-
-Row
---------------------------------------
-
-### Win percentage for the week
-
-```{r}
-comb_rate <- comb_weekly_win_percentage[[length(comb_weekly_win_percentage)]]*100
-gauge(comb_rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-```{r}
-#valueBox(value = comb_weekly_win_percentage[[length(comb_weekly_win_percentage)]],icon = "fa-user-plus",caption = "Win percentage for the week.",color = "green")
-```
-
-### Season Win Percent
-
-```{r}
-comb_season <- comb_season_win_percentage*100
-gauge(comb_season, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-
-```{r}
-#valueBox(value = comb_season_win_percentage,icon = "fa-user-plus",caption = "Season win percentage.",color = "green")
-```
-
-### Games Correct
-```{r}
-valueBox(value = comb_season_wins,icon = "fa-trophy",caption = "Correct Games this Season")
-```
-
-### Games Picked
-```{r}
-valueBox(value = comb_season_games,icon = "fa-clipboard-list",caption = "Games Picked this Season")
-```
-
-### Number of Predictions
-```{r}
-valueBox(value = comb_Total,icon = "fa-users",caption = "Predictions this week")
-```
-
-
-Row
---------------------------------------
-
-### 
-
-```{r}
-comb_table
-```
-
-### 
-
-```{r}
-ggplotly(comb_plot) %>% 
-  layout(title = list(y = .93, xref = "plot"),
-         margin = list(t = 40))
-```
-
-Matched Predictions
-==========================================================================
-
-Row
---------------------------------------
-
-### Win percentage for the week
-
-```{r}
-matched_rate <- matched_weekly_win_percentage[[length(matched_weekly_win_percentage)]]*100
-gauge(matched_rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-```{r}
-#valueBox(value = matched_weekly_win_percentage[[length(matched_weekly_win_percentage)]],icon = "fa-user-plus",caption = "Win percentage for the week.",color = "green")
-```
-
-### Season Win Percent
-
-```{r}
-matched_season <- matched_season_win_percentage*100
-gauge(matched_season, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(55, 100), warning = c(40, 54), danger = c(0, 39)
-))
-```
-
-```{r}
-#valueBox(value = matched_season_win_percentage,icon = "fa-user-plus",caption = "Season win percentage.",color = "green")
-```
-
-### Games Picked
-```{r}
-valueBox(value = matched_season_games,icon = "fa-clipboard-list",caption = "Games Picked this Season")
-```
-
-### Season Games Correct
-```{r}
-valueBox(value = matched_season_wins,icon = "fa-trophy",caption = "Correct Games this Season")
-```
-
-
-Row
---------------------------------------
-
-### 
-
-```{r}
-matched_table
-```
-
-### 
-
-```{r}
-ggplotly(matched_plot) %>% 
-  layout(title = list(y = .93, xref = "plot"),
-         margin = list(t = 40))
-```
-
-INSCOM Data {data-navmenu="INSCOM Results"}
+Data
 ==========================================================================
 
 ```{r}
 datatable(
-  inscom.data, extensions = 'Buttons', options = list(
+  inst.data, extensions = 'Buttons', options = list(
     dom = 'Blfrtip',
     buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
     lengthMenue = list( c(10, 25, 50, 100, -1), c(10, 25, 50, 100, "All") )
@@ -1859,20 +759,8 @@ datatable(
 )
 ```
 
-West Point Data {data-navmenu="West Point Results"}
-==========================================================================
-
-```{r}
-datatable(
-  wp.data, extensions = 'Buttons', options = list(
-    dom = 'Blfrtip',
-    buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
-    lengthMenue = list( c(10, 25, 50, 100, -1), c(10, 25, 50, 100, "All") )
-  )
-)
-```
 <!--
-INSCOM Group Winnings {data-navmenu="INSCOM Results"}
+Instructor Group Winnings {data-navmenu="Instructor Results"}
 ==========================================================================
 
 Sidebar {.sidebar} 
@@ -1889,9 +777,9 @@ The **plot on the right** tracks our weekly and total winnings over the season.
  
  <font size="4">
 
-This week's winnings: `r this_weeks_inscom_money`
+This week's winnings: `r this_weeks_inst_money`
 
-Total season winnings to date: `r this_seasons_inscom_money`
+Total season winnings to date: `r this_seasons_inst_money`
  
  </font>
  
@@ -1902,87 +790,12 @@ Row
 ### 
 
 ```{r}
-inscom_group_odds_table
+inst_group_odds_table
 ```
 
 ###
 ```{r}
 group_moneyline_plot
-```
-
-West Point Group Winnings {data-navmenu="West Point Results"}
-==========================================================================
-
-Sidebar {.sidebar} 
--------------------------------------
-<font size="4">
-
-This page looks at what would happen if we put $10 on each of our predictions. 
-
-The **table on the left** shows how much we would win or lose for each game this week. 
-
-The **plot on the right** tracks our weekly and total winnings over the season.
- 
- </font>
- 
- <font size="4">
-
-This week's winnings: `r this_weeks_wp_money`
-
-Total season winnings to date: `r this_seasons_wp_money`
- 
- </font>
- 
-
-Row
---------------------------------------
-
-### 
-
-```{r}
-wp_group_odds_table
-```
-
-###
-```{r}
-wp_group_moneyline_plot
-```
-
-Combined Group Winnings {data-navmenu="Combined Predictions"}
-==========================================================================
-
-Sidebar {.sidebar} 
--------------------------------------
-<font size="4">
-
-This page looks at what would happen if we put $10 on each of our predictions. 
-
-The **table on the left** shows how much we would win or lose for each game this week. 
-
-The **plot on the right** tracks our weekly and total winnings over the season.
- 
- </font>
- 
- <font size="4">
-
-This week's winnings: `r this_weeks_comb_money`
-
-Total season winnings to date: `r this_seasons_comb_money`
- 
- </font>
- 
-Row
---------------------------------------
-
-### 
-
-```{r}
-comb_group_odds_table
-```
-
-###
-```{r}
-comb_moneyline_plot
 ```
 
 -->

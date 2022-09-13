@@ -282,7 +282,7 @@ results_fn = function(x,y){
   x %>% select(Prediction, Winner = winner, votes_for, votes_against) %>% 
     mutate(Correct = ifelse(Prediction =="Tie", "--", ifelse(Prediction == Winner, "Yes", "No"))) %>%
     mutate(`Correct Votes` = ifelse(Prediction == Winner, votes_for, ifelse(Winner == "TIE", 0, votes_against))) %>% 
-    mutate(`Correct Percent` = round(as.numeric(`Correct Votes`)/(dim(inscom.picks[[length(inscom.picks)]])[1]),4)) %>%
+    mutate(`Correct Percent` = round(as.numeric(`Correct Votes`)/(dim(inst.picks[[length(inst.picks)]])[1]),4)) %>%
     add_column(Game = 1:y) %>% 
     select(Game, Prediction, Winner, Correct, `Correct Votes`, `Correct Percent`)
 }  
