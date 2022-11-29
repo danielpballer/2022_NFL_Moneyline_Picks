@@ -482,6 +482,111 @@ indiv_plot_comb = weekly_indiv_percent %>%
 ```
 -->
 
+```{r Calculting instructor winnings based on moneyline odds, eval=FALSE, include=FALSE}
+#turned off code chunk for the 2022 season
+#adding the odds and winnings to the results table
+odds_results = map2(weeks, results, weekly_odds)
+
+#Creating a list of total winnings for each week
+weekly_winnings = map(odds_results, weekly_money)
+
+#total amount we have won/lost this season
+season_money = weekly_winnings %>% 
+  unlist() %>% 
+  as.data.frame() %>% 
+  rename("Weekly Winnings" = 1) %>% 
+  mutate("Season Winnings" = cumsum(`Weekly Winnings`))
+```
+
+```{r Creating instructor winnings table, eval=FALSE, include=FALSE}
+#turned off code chunk for the 2022 season
+#Displaying the group moneyline results
+inst_group_odds_table = odds_results[[length(odds_results)]] %>% gt() %>% 
+  cols_align(
+    align = "center") %>% 
+   tab_header(
+    title = md("This Week's Winnings"),
+    subtitle = md(glue("Week {length(odds_results)}"))
+    ) %>% 
+   tab_style(
+    style = cell_text(color = "red", weight = "bold"),
+    locations = cells_body(
+      columns = c(Correct),
+      rows = Correct =="No"
+    )) %>% 
+  tab_style(
+    style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = c(Winnings),
+      rows = Winnings < 0
+    )) %>%
+  grand_summary_rows(
+    columns = c(Winnings),
+    fns = list(
+      Total = ~sum(.)),
+    missing_text = "",
+    formatter = fmt_currency
+    ) %>% 
+  # tab_style(
+  #   style = cell_text(color = "red"),
+  #   locations = cells_grand_summary(
+  #     columns = c(Winnings),
+  #     rows =  0 > `Total`
+  #   )) %>% 
+   tab_style(
+    style = cell_text(color = "green", weight = "bold"),
+    locations = cells_body(
+      columns = c(Correct),
+      rows = Correct =="Yes"
+    )) %>% 
+   fmt_currency(
+    columns = c(Winnings),
+    currency = "USD"
+    ) %>%
+  tab_options(
+    data_row.padding = px(3),
+    container.height = "100%"
+   )
+```
+
+```{r Instructor winnings plot, eval=FALSE, include=FALSE}
+#turned off code chunk for the 2022 season
+group_moneyline_plot_data = group_season_for_plotting %>% 
+  add_column(season_money) %>% 
+  select(-`Win Percentage`)
+
+group_moneyline_plot =  group_moneyline_plot_data %>% 
+  ggplot(aes(x = as.factor(Week),
+             y = `Season Winnings`, 
+             fill = `Season Winnings` < 0))+
+  geom_bar(stat = "identity")+
+  scale_fill_manual(values = c("#be0032", "#006400"))+
+  new_scale("fill")+
+  geom_point(aes(x = as.factor(Week), y = `Weekly Winnings`, 
+                 fill = `Weekly Winnings` < 0), 
+             size = 3, shape = 21, color = "black", stroke=2)+
+  geom_path(aes(x = as.factor(Week), y = `Weekly Winnings`))+
+  scale_fill_manual(values = c("#be0032", "#006400"))+
+  labs(x = "NFL Week", y = "Winnings", title = "Instructor weekly and season winnings",
+       subtitle = "Bars represent season cumulative <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.  \nPoints represent Weekly <span style = 'color:#006400'>gains</span> and <span style = 'color:#be0032'>losses</span>.")+
+  geom_hline(aes(yintercept = 0))+
+  theme_classic()+
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = .5, size = 18),
+        plot.subtitle = element_markdown(hjust = .5, size = 10))
+
+this_weeks_inst_money = group_moneyline_plot_data %>% 
+  filter(Week==current_week) %>% 
+  select(`Weekly Winnings`) %>% 
+  pull() %>% 
+  scales::dollar()
+
+this_seasons_inst_money = group_moneyline_plot_data %>% 
+  filter(Week==current_week) %>% 
+  select(`Season Winnings`) %>% 
+  pull() %>% 
+  scales::dollar()
+```
 
 ```{r data for data page}
 inst.data = map2(inst.picks, weeks, disp_data) %>% bind_rows()
@@ -659,3 +764,44 @@ datatable(
   )
 )
 ```
+
+<!--
+Instructor Group Winnings {data-navmenu="Instructor Results"}
+==========================================================================
+
+Sidebar {.sidebar} 
+-------------------------------------
+<font size="4">
+
+This page looks at what would happen if we put $10 on each of our predictions. 
+
+The **table on the left** shows how much we would win or lose for each game this week. 
+
+The **plot on the right** tracks our weekly and total winnings over the season.
+ 
+ </font>
+ 
+ <font size="4">
+
+This week's winnings: `r #this_weeks_inst_money`
+
+Total season winnings to date: `r this_seasons_inst_money`
+ 
+ </font>
+ 
+
+Row
+--------------------------------------
+
+### 
+
+```{r}
+inst_group_odds_table
+```
+
+###
+```{r}
+group_moneyline_plot
+```
+
+-->
